@@ -1,5 +1,5 @@
 # Use a slim Python image for a smaller footprint
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # Set environment variables to prevent Python from writing pyc files and buffering stdout/stderr
 ENV PYTHONUNBUFFERED=1
@@ -30,4 +30,4 @@ EXPOSE 8000
 
 # Use Uvicorn for production-grade ASGI support
 # 'main:app' assumes your FastAPI instance is named 'app' in a file called 'main.py'
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "3"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

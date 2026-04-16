@@ -5,13 +5,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword # Set a root password
       MYSQL_DATABASE: ecommdb
-      MYSQL_USER: raj
-      MYSQL_PASSWORD: raj123
+      MYSQL_USER: manoj
+      MYSQL_PASSWORD: manoj123
     healthcheck:
       # This command checks if MySQL is actually ready for connections
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
       timeout: 5s
+      retries: 5
     ports:
       - "3306:3306"
     volumes:
@@ -19,6 +20,7 @@ services:
 
   backend:
     build: ./backend # Path to your FastAPI folder
+    dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:
@@ -30,16 +32,6 @@ services:
         condition: service_healthy
     volumes:
       - ./backend/app/media:/app/app/media
-
-  frontend:
-    build:
-      context: ./frontend # Path to your Next.js folder
-      args:
-        NEXT_PUBLIC_API_BASE_URL: "http://localhost:8000"
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
 
 volumes:
   mysql_data:
