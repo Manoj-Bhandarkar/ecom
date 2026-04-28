@@ -33,7 +33,7 @@ The backend provides APIs for:
 
 ### 2.1 Product Perspective
 
-This backend is a standalone RESTful API, intended to be consumed by a frontend (web/mobile). It uses FastAPI, SQLAlchemy (async), MySQL, and Alembic for migrations.
+This backend is a standalone RESTful API, intended to be consumed by a frontend (web/mobile). It uses FastAPI, SQLAlchemy (async), Postgres, and Alembic for migrations.
 
 ### 2.2 Product Functions
 
@@ -51,13 +51,13 @@ This backend is a standalone RESTful API, intended to be consumed by a frontend 
 
 ### 2.4 Operating Environment
 
-- **Backend:** Python 3.x, FastAPI, SQLAlchemy ORM, MySQL, Alembic
+- **Backend:** Python 3.x, FastAPI, SQLAlchemy ORM, PostgreSQL, Alembic
 - **Frontend:** Any (not included) Later in ReactJS or NextJS
 - **OS:** Windows (as per setup), Linux compatible
 
 ### 2.5 Design and Implementation Constraints
 
-- Async SQLAlchemy and aiomysql
+- Async SQLAlchemy and as
 - JWT for authentication
 - Passwords hashed with bcrypt
 - Environment variables via python-decouple
@@ -198,7 +198,7 @@ This backend is a standalone RESTful API, intended to be consumed by a frontend 
 
 ### 4.2 Database
 
-- MySQL, async SQLAlchemy ORM models for all entities
+- PostgreSQL, async SQLAlchemy ORM models for all entities
 
 ### 4.3 Other Interfaces
 
@@ -236,7 +236,7 @@ This backend is a standalone RESTful API, intended to be consumed by a frontend 
 - **Reliability:** Database transactions for critical operations (checkout, payment)
 - **Availability:** Async operations for high concurrency
 - **Maintainability:** Modular code, clear separation of concerns
-- **Portability:** Runs on any OS with Python 3.x and MySQL
+- **Portability:** Runs on any OS with Python 3.x and PostgreSQL
 
 ---
 

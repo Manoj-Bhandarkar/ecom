@@ -8,10 +8,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install system dependencies required for MySQL (libmysqlclient) and building Python packages
+# Install system dependencies required for PostgreSQL (libpq) and building Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
-    default-libmysqlclient-dev \
+    libpq-dev \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 

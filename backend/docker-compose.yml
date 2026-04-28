@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: ecommerce_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    healthcheck:
+      # This command checks if PostgreSQL is actually ready for connections
+      test: ["CMD-SHELL", "pg_isready -U manoj"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: # Path to your FastAPI folder
+      context: .        # The folder where the Dockerfile lives
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.docker
+    environment:
+      - DB_HOST=db  # Overrides localhost to use the internal 'db' container name
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend/app/media:/app/app/media
+
+volumes:
+  postgres_data:

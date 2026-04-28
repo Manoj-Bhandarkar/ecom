@@ -32,7 +32,7 @@ DB_NAME = env_config("DB_NAME")
 DB_PORT = env_config("DB_PORT", cast=int)
 DB_HOST = env_config("DB_HOST")
 
-DATABASE_URL = f"mysql+aiomysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 config.set_main_option("sqlalchemy.url", DATABASE_URL)
 

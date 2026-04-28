@@ -2,7 +2,7 @@ python -m venv venv
 
 venv\scripts\activate
 
-pip install "fastapi[standard]" sqlalchemy[asyncio] aiomysql alembic python-decouple python-jose[cryptography] passlib[bcrypt] cryptography
+pip install "fastapi[standard]" sqlalchemy[asyncio] asyncpg alembic python-decouple python-jose[cryptography] passlib[bcrypt] cryptography
 
 pip freeze > requirements.txt
 
